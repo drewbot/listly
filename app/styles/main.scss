@@ -59,6 +59,27 @@ $secondary-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
     }
 }
 
+@mixin secondary-button($bg-color, $color) {
+    padding: 6px 10px 10px 10px;
+    height: 30px;
+    background-color: $bg-color;
+    @include primary-text(0.7em, 300, light, $color);
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: 2px solid darken($bg-color, 7%);
+    border-radius: 15px;
+    outline: none;
+    transition: all 80ms ease-in;
+    &:hover {
+        background-color: lighten($bg-color, 5%);
+        border-color: darken($bg-color, 10%);
+        cursor: pointer;
+    }
+    &:active {
+        background-color: lighten($bg-color, 10%);
+    }
+}
+
 // --------- Global -----------
 *, *:before, *:after {
   -moz-box-sizing: border-box; 
@@ -99,6 +120,17 @@ header {
     margin: 0 auto;
     height: 100px;
     background-color: $lemon;
+    background-image: url('../images/shattered.png');
+    // background: #f9f9a2; /* Old browsers */
+    // /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    // background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2Y5ZjlhMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlOGVkNzYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    // background: -moz-linear-gradient(top,  #f9f9a2 1%, #e8ed76 100%); /* FF3.6+ */
+    // background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9a2), color-stop(100%,#e8ed76)); /* Chrome,Safari4+ */
+    // background: -webkit-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* Chrome10+,Safari5.1+ */
+    // background: -o-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* Opera 11.10+ */
+    // background: -ms-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* IE10+ */
+    // background: linear-gradient(to bottom,  #f9f9a2 1%,#e8ed76 100%); /* W3C */
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9a2', endColorstr='#e8ed76',GradientType=0 ); /* IE6-8 */
 
     div {
         padding: 25px 30px 0 30px;
@@ -108,7 +140,7 @@ header {
         .logo {
             display: inline-block;
             padding-top: 10px;
-            @include secondary-text(1.5em, $purple);
+            @include secondary-text(1.6em, $purple);
         }
 
         .new-item {
@@ -137,7 +169,7 @@ header {
     display: none;
     width: 100%;
     background-color: $purple;
-    border-top: 5px solid $darkpurple;
+    border-top: 3px solid $darkpurple;
     -webkit-transtion: height 200ms ease-in;
 
     .create-item-inner {
@@ -187,7 +219,8 @@ header {
     width: 100%;
     height: 950px;
     background-color: $mint;
-    border-top: 5px solid $darkmint;
+    background-image: url('../images/pentagon.png');
+    border-top: 3px solid $darkmint;
 
     .list-section-inner {
         padding: 30px 30px 30px 30px;
@@ -196,21 +229,25 @@ header {
 
         .view-container {
             display: block;
-            margin-bottom: 10px;
-            border-bottom: 1px solid grey;
-            padding: 15px;
+            margin-bottom: 25px;
+            padding: 25px;
             float: left;
             width: 100%;
             height: 100%;
             max-height: 280px;
+            background-color: $white;
             @include primary-text(1em, 300, light, $darkpurple);
-            overflow: scroll; 
-            border-right: none;
+            border-radius: 0 0 25px 25px;
+            overflow: scroll;
+            -webkit-box-shadow: 0px 1px 5px $darkmint;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow:    0px 1px 5px $darkmint;  /* Firefox 3.5 - 3.6 */
+            box-shadow:         0px 1px 5px $darkmint;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
             p {
-                padding: 10px 0;
-                font-size: 1.2em;
-                border-bottom: 1px solid lightgrey;
+                padding: 0 0 20px 0;
+                @include primary-text(1.2em, 700, bold, $darkpurple);
+                text-align: center;
+                border-bottom: 3px solid $darkwhite;
             }
 
             ul {
@@ -230,7 +267,7 @@ header {
 }
 
 .container .view-container:nth-of-type(3n) {
-  border-right: none;
+  
 }
 
 .line-item {
@@ -238,8 +275,26 @@ header {
 }
 
 .options {
-    padding: 5px 0;
-    border-bottom: 1px solid lightgrey;
+    padding: 15px 0;
+    border-bottom: 3px solid $darkwhite;
+
+    li {
+        padding: 0 0 12px 12px;
+    }
+
+    .copy-to-one, .copy-to-two, .copy-to-three {
+        margin: 0 5px 10px 0;
+        @include secondary-button($white, $purple);
+    }
+
+    .move-to-one, .move-to-two, .move-to-three {
+        margin: 0 5px 10px 0;
+        @include secondary-button($mint, $purple);
+    }
+
+    .delete-button {
+        @include secondary-button($mustard, $purple);
+    }
 }
 
 
@@ -276,11 +331,14 @@ header {
 
             .view-container {
                 display: inline-block;
-                margin: 0 auto;
-                width: 33.333333%;
-                height: 570px;
+                margin-right: 3.5%;
+                width: 31%;
+                // height: 570px;
                 max-height: none;
-                border-right: 1px solid grey;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
             }
         }
     }

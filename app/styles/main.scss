@@ -3,7 +3,7 @@
 
 
 // primary color
-$mint: #D7E8D5;
+$mint: #B6DFC5;
 $spring: #E6F0AF;
 $lemon: #E8ED76;
 $mustard: #FFCD57;
@@ -119,18 +119,8 @@ input[type=checkbox] {
 header {
     margin: 0 auto;
     height: 100px;
-    background-color: $lemon;
-    background-image: url('../images/shattered.png');
-    // background: #f9f9a2; /* Old browsers */
-    // /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-    // background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2Y5ZjlhMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlOGVkNzYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    // background: -moz-linear-gradient(top,  #f9f9a2 1%, #e8ed76 100%); /* FF3.6+ */
-    // background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9a2), color-stop(100%,#e8ed76)); /* Chrome,Safari4+ */
-    // background: -webkit-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* Chrome10+,Safari5.1+ */
-    // background: -o-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* Opera 11.10+ */
-    // background: -ms-linear-gradient(top,  #f9f9a2 1%,#e8ed76 100%); /* IE10+ */
-    // background: linear-gradient(to bottom,  #f9f9a2 1%,#e8ed76 100%); /* W3C */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9a2', endColorstr='#e8ed76',GradientType=0 ); /* IE6-8 */
+    background-color: $mustard;
+    border-bottom: 3px solid $darkmustard;
 
     div {
         padding: 25px 30px 0 30px;
@@ -169,7 +159,7 @@ header {
     display: none;
     width: 100%;
     background-color: $purple;
-    border-top: 3px solid $darkpurple;
+    border-bottom: 3px solid $darkpurple;
     -webkit-transtion: height 200ms ease-in;
 
     .create-item-inner {
@@ -181,13 +171,50 @@ header {
         line-height: 2em;
 
         .create-item-form {
-            width: 60%;
+            width: 70%;
 
             ul {
                 list-style: none;
                 display: inline-block;
-                padding: 0 0 14px 0;
+                padding: 0 0 28px 0;
                 width: 100%;
+
+                li {
+                    // text-align: center;
+
+                    input[type="checkbox"] {
+                        display: none;
+                    }
+
+                    input[type="checkbox"] + label span {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        margin: -3px 14px 0 0;
+                        vertical-align: middle;
+                        background-color: $white;
+                        border: 3px solid $darkwhite;
+                        border-radius: 100%;
+                    }
+
+                    input[type="checkbox"]:checked + label span {
+                        background-color: $mint;
+                        border: 3px solid $darkmint;
+                    }
+
+                    label {
+
+                        &:hover {
+                            color: lighten($purple, 50%);
+                            cursor: pointer;
+                        }
+
+                        // &:hover ~ span {
+                        //     background-color: darken($white, 4%);
+                        //     border: 3px solid $mint;
+                        // }
+                    }
+                }
             }
 
             .item-input-button {
@@ -220,7 +247,6 @@ header {
     height: 950px;
     background-color: $mint;
     background-image: url('../images/pentagon.png');
-    border-top: 3px solid $darkmint;
 
     .list-section-inner {
         padding: 30px 30px 30px 30px;
@@ -284,7 +310,7 @@ header {
 
     .copy-to-one, .copy-to-two, .copy-to-three {
         margin: 0 5px 10px 0;
-        @include secondary-button($white, $purple);
+        @include secondary-button(darken($white, 2%), $purple);
     }
 
     .move-to-one, .move-to-two, .move-to-three {
@@ -307,6 +333,7 @@ header {
             .create-item-form {
 
                 ul {
+                    padding: 0 0 8px 0;
                     width: 50%;
                 }
 
@@ -325,7 +352,7 @@ header {
 
     .list-section {
         display: block;
-        height: 1000px;
+        height: 1200px;
 
         .list-section-inner {
 

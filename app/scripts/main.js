@@ -5,10 +5,12 @@
 var rotation = 0;
 
 jQuery.fn.rotate = function(degrees) {
-  $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
-               '-moz-transform' : 'rotate('+ degrees +'deg)',
-               '-ms-transform' : 'rotate('+ degrees +'deg)',
-               'transform' : 'rotate('+ degrees +'deg)'});
+  $(this).css({
+  	'-webkit-transform' : 'rotate('+ degrees +'deg)',
+		'-moz-transform' : 'rotate('+ degrees +'deg)',
+		'-ms-transform' : 'rotate('+ degrees +'deg)',
+		'transform' : 'rotate('+ degrees +'deg)'
+	});
   return $(this);
 };
 
@@ -27,6 +29,23 @@ $('.new-item').click(function () {
 	$('.create-item').animate({height: 'toggle'}, 400, function() {
   });
 });
+
+// hover on label changes label span css
+$('.create-item-form').find('label').mouseenter( function(){
+	$(this).children('span').css({
+    '-webkit-box-shadow' : '2px 2px 5px #362a34',
+    '-moz-box-shadow' :    '2px 2px 5px #362a34',
+    'box-shadow' :         '2px 2px 5px #362a34'
+	});
+})
+// mouse leave changes label span back
+$('.create-item-form').find('label').mouseleave( function(){
+	$(this).children('span').css({
+    '-webkit-box-shadow' : 'none',
+    '-moz-box-shadow' :    'none',
+    'box-shadow' :         'none'
+	});
+})
 
 // focus in on new item input changes border color
 $('.new-input').focusin( function(){

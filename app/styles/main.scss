@@ -1,0 +1,287 @@
+// bower:scss
+// endbower
+
+
+// primary color
+$mint: #D7E8D5;
+$spring: #E6F0AF;
+$lemon: #E8ED76;
+$mustard: #FFCD57;
+$purple: #4A3A47;
+$white: #ffffff;
+
+// secondary color
+$darkmint: darken($mint, 15%);
+$darkspring: darken($spring, 10%);
+$darklemon: darken($lemon, 23%);
+$darkmustard: darken($mustard, 10%);
+$darkpurple: darken($purple, 7%);
+$darkwhite: darken($white, 10%);
+
+// fonts
+$primary-typeface: 'Comfortaa', helvetica, sans-serif;
+$secondary-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
+
+// light 300, normal 400, bold 700
+@mixin primary-text($size, $weight, $style, $color) {
+    font-family: $primary-typeface;
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+    color: $color;
+}
+
+@mixin secondary-text($size, $color) {
+    font-family: $secondary-typeface;
+    font-size: $size;
+    color: $color;
+}
+
+// button
+@mixin primary-button($bg-color, $color, $padding-t, $padding-b) {
+    padding: $padding-t 30px $padding-b 22px;
+    height: 50px;
+    background-color: $bg-color;
+    @include primary-text(1em, 300, light, $color);
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: 3px solid darken($bg-color, 7%);
+    border-radius: 25px;
+    outline: none;
+    transition: all 80ms ease-in;
+    &:hover {
+        background-color: lighten($bg-color, 5%);
+        border-color: darken($bg-color, 10%);
+        cursor: pointer;
+    }
+    &:active {
+        background-color: lighten($bg-color, 10%);
+    }
+}
+
+// --------- Global -----------
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+
+  margin: 0 auto;
+}
+
+body {
+    margin: 0 auto;
+    background: #fafafa;
+    @include primary-text(1em, 300, light, $darkpurple);
+    color: #333;
+}
+
+input[type=text] {
+    height: 50px;
+    padding: 0 20px 0 20px;
+    border-radius: 25px;
+    border: 3px solid $darkwhite;
+    outline: none;
+
+    &:active {
+        border: 3px solid $darkpurple;
+    }
+}
+
+input[type=checkbox] {
+    height: 20px;
+    margin: 0 15px 0 15px;
+    border-radius: 5px;
+    outline: none; 
+}
+
+// -------- Header ---------
+header {
+    margin: 0 auto;
+    height: 100px;
+    background-color: $lemon;
+
+    div {
+        padding: 25px 30px 0 30px;
+        width: 100%;
+        max-width: 1100px;
+
+        .logo {
+            display: inline-block;
+            padding-top: 10px;
+            @include secondary-text(1.5em, $purple);
+        }
+
+        .new-item {
+            display: inline-block;
+            float: right;
+            @include primary-button($purple, $white, 9px, 9px);
+
+            img {
+                margin-right: 16px;
+                -webkit-transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                -ms-transition: all 300ms ease-out;
+                transition: all 300ms ease-out;
+            }
+        }
+
+        .clear-float {
+            clear: both;
+        }
+    }
+}
+
+// -------- Create New Item ---------
+.create-item {
+    // clear: both;
+    display: none;
+    width: 100%;
+    background-color: $purple;
+    border-top: 5px solid $darkpurple;
+    -webkit-transtion: height 200ms ease-in;
+
+    .create-item-inner {
+        margin: 0 auto;
+        padding: 32px 30px 30px 30px;
+        width: 100%;
+        max-width: 1100px;
+        @include primary-text(1.1em, 400, normal, lighten($purple, 40%));
+        line-height: 2em;
+
+        .create-item-form {
+            width: 60%;
+
+            ul {
+                list-style: none;
+                display: inline-block;
+                padding: 0 0 14px 0;
+                width: 100%;
+            }
+
+            .item-input-button {
+                display: inline-block;
+                width: 100%;
+
+                .new-input {
+                    width: 100%;
+                    font-size: 1em;
+                }
+
+                .save-item {
+                    margin-top: 25px;
+                    width: 100%;
+                    @include primary-button($darkmint, $white, 10px, 10px);
+                }
+            }
+        }
+    }
+}
+
+.show-item-create {
+    // display: inline-block;
+}
+
+// -------- list Section ---------
+.list-section {
+    margin: 0 auto;
+    width: 100%;
+    height: 950px;
+    background-color: $mint;
+    border-top: 5px solid $darkmint;
+
+    .list-section-inner {
+        padding: 30px 30px 30px 30px;
+        width: 100%;
+        max-width: 1100px;
+
+        .view-container {
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 1px solid grey;
+            padding: 15px;
+            float: left;
+            width: 100%;
+            height: 100%;
+            max-height: 280px;
+            @include primary-text(1em, 300, light, $darkpurple);
+            overflow: scroll; 
+            border-right: none;
+
+            p {
+                padding: 10px 0;
+                font-size: 1.2em;
+                border-bottom: 1px solid lightgrey;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    @include primary-text(1em, 300, light, $darkpurple);
+                }
+            }
+        }
+
+        .clear-float {
+            clear: both;
+        }
+    }
+}
+
+.container .view-container:nth-of-type(3n) {
+  border-right: none;
+}
+
+.line-item {
+    color: black;
+}
+
+.options {
+    padding: 5px 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+
+@media screen and (min-width: 60em) {
+
+    .create-item {
+
+        .create-item-inner {
+
+            .create-item-form {
+
+                ul {
+                    width: 50%;
+                }
+
+                .item-input-button {
+                    width: 49%;
+
+                    .new-item-text {
+                    }
+
+                    .save-item {
+                    }
+                }
+            }
+        }
+    }
+
+    .list-section {
+        display: block;
+        height: 1000px;
+
+        .list-section-inner {
+
+            .view-container {
+                display: inline-block;
+                margin: 0 auto;
+                width: 33.333333%;
+                height: 570px;
+                max-height: none;
+                border-right: 1px solid grey;
+            }
+        }
+    }
+}

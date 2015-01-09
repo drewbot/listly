@@ -103,25 +103,6 @@ body {
     color: #333;
 }
 
-input[type=text] {
-    height: 50px;
-    padding: 0 20px 0 20px;
-    border-radius: 25px;
-    border: 3px solid $darkwhite;
-    outline: none;
-
-    &:active {
-        border: 3px solid $darkpurple;
-    }
-}
-
-input[type=checkbox] {
-    height: 20px;
-    margin: 0 15px 0 15px;
-    border-radius: 5px;
-    outline: none; 
-}
-
 // -------- Header ---------
 header {
     margin: 0 auto;
@@ -201,6 +182,10 @@ header {
 
                     input[type="checkbox"] {
                         display: none;
+                        height: 20px;
+                        margin: 0 15px 0 15px;
+                        border-radius: 5px;
+                        outline: none; 
                     }
 
                     input[type="checkbox"] + label span {
@@ -239,8 +224,17 @@ header {
                 width: 100%;
 
                 .new-input {
+                    padding: 0 20px 0 20px;
                     width: 100%;
-                    font-size: 1em;
+                    height: 50px;
+                    @include primary-text(1em, 400, normal, $purple);
+                    border-radius: 25px;
+                    border: 3px solid $darkwhite;
+                    outline: none;
+
+                    &:active {
+                        border: 3px solid $darkpurple;
+                    }
                 }
 
                 .save-item {

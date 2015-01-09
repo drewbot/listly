@@ -20,7 +20,8 @@ $darkwhite: darken($white, 10%);
 
 // fonts
 $primary-typeface: 'Comfortaa', helvetica, sans-serif;
-$secondary-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
+$headline-typeface: 'Fredoka One', 'Comfortaa', helvetica, sans-serif;
+$logo-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
 
 // light 300, normal 400, bold 700
 @mixin primary-text($size, $weight, $style, $color) {
@@ -31,8 +32,14 @@ $secondary-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
     color: $color;
 }
 
-@mixin secondary-text($size, $color) {
-    font-family: $secondary-typeface;
+@mixin headline-text($size, $color) {
+    font-family: $headline-typeface;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin logo-text($size, $color) {
+    font-family: $logo-typeface;
     font-size: $size;
     color: $color;
 }
@@ -130,7 +137,10 @@ header {
         .logo {
             display: inline-block;
             padding-top: 10px;
-            @include secondary-text(1.6em, $purple);
+            @include logo-text(1.6em, darken($mustard, 20%));
+            -webkit-text-shadow: -1px -1px 3px lighten($mustard, 20%);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-text-shadow:    -1px -1px 3px lighten($mustard, 20%);  /* Firefox 3.5 - 3.6 */
+            text-shadow:         -1px -1px 3px lighten($mustard, 20%);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
         }
 
         .new-item {
@@ -180,7 +190,14 @@ header {
                 width: 100%;
 
                 li {
-                    // text-align: center;
+                    text-align: center;
+
+                    &:first-of-type {
+
+                        input[type="checkbox"] + label span {
+                            margin: -3px 16px 0 0;
+                        }
+                    }
 
                     input[type="checkbox"] {
                         display: none;
@@ -199,7 +216,7 @@ header {
 
                     input[type="checkbox"]:checked + label span {
                         background-color: $mint;
-                        border: 3px solid $darkmint;
+                        border: 3px solid darken($mint, 20%);
                     }
 
                     label {
@@ -265,9 +282,9 @@ header {
             @include primary-text(1em, 300, light, $darkpurple);
             border-radius: 0 0 25px 25px;
             overflow: scroll;
-            -webkit-box-shadow: 0px 1px 5px $darkmint;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-box-shadow:    0px 1px 5px $darkmint;  /* Firefox 3.5 - 3.6 */
-            box-shadow:         0px 1px 5px $darkmint;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+            -webkit-box-shadow: 0px 1px 5px $darkmint;
+            -moz-box-shadow:    0px 1px 5px $darkmint;
+            box-shadow:         0px 1px 5px $darkmint;
 
             p {
                 padding: 0 0 20px 0;

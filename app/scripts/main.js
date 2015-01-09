@@ -30,22 +30,36 @@ $('.new-item').click(function () {
   });
 });
 
+
+
+
+
+// store the checked checkbox in a variable
+var checkedBox = $('input:checkbox:checked')
+
 // hover on label changes label span css
 $('.create-item-form').find('label').mouseenter( function(){
 	$(this).children('span').css({
-    '-webkit-box-shadow' : '2px 2px 5px #362a34',
-    '-moz-box-shadow' :    '2px 2px 5px #362a34',
-    'box-shadow' :         '2px 2px 5px #362a34'
+    'border' : '3px solid #362a34'
 	});
 })
 // mouse leave changes label span back
 $('.create-item-form').find('label').mouseleave( function(){
-	$(this).children('span').css({
-    '-webkit-box-shadow' : 'none',
-    '-moz-box-shadow' :    'none',
-    'box-shadow' :         'none'
-	});
+	var currentlyHovered = $(this)
+	if (currentlyHovered !== checkedBox) {
+		$(this).children('span').css({
+	    'border' : '#e6e6e6'
+		});
+	} else {
+		$(this).children('span').css({
+	    'border' : '#red'
+		});
+	}
 })
+
+
+
+
 
 // focus in on new item input changes border color
 $('.new-input').focusin( function(){

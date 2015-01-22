@@ -3,6 +3,7 @@
 
 
 // primary color
+$irish-spring: #ECF3D6;
 $mint: #B6DFC5;
 $spring: #E6F0AF;
 $lemon: #E8ED76;
@@ -11,6 +12,7 @@ $purple: #4A3A47;
 $white: #ffffff;
 
 // secondary color
+$dark-irish-spring: darken($irish-spring, 15%);
 $darkmint: darken($mint, 15%);
 $darkspring: darken($spring, 10%);
 $darklemon: darken($lemon, 23%);
@@ -107,8 +109,8 @@ body {
 header {
     margin: 0 auto;
     height: 100px;
-    background-color: $mustard;
-    border-bottom: 3px solid $darkmustard;
+    background-color: $irish-spring;
+    border-bottom: 3px solid $dark-irish-spring;
 
     div {
         padding: 25px 30px 0 30px;
@@ -118,10 +120,10 @@ header {
         .logo {
             display: inline-block;
             padding-top: 10px;
-            @include logo-text(1.6em, darken($mustard, 20%));
-            -webkit-text-shadow: -1px -1px 3px lighten($mustard, 20%);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-text-shadow:    -1px -1px 3px lighten($mustard, 20%);  /* Firefox 3.5 - 3.6 */
-            text-shadow:         -1px -1px 3px lighten($mustard, 20%);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+            @include logo-text(1.6em, darken($irish-spring, 20%));
+            -webkit-text-shadow: -1px -1px 3px lighten($irish-spring, 20%);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-text-shadow:    -1px -1px 3px lighten($irish-spring, 20%);  /* Firefox 3.5 - 3.6 */
+            text-shadow:         -1px -1px 3px lighten($irish-spring, 20%);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
         }
 
         .new-item {

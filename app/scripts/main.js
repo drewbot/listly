@@ -40,7 +40,7 @@ var checkedBox = $('input:checkbox:checked')
 // hover on label changes label span css
 $('.create-item-form').find('label').mouseenter( function(){
 	$(this).children('span').css({
-    'border' : '3px solid #362a34'
+    'border' : '2px solid #362a34'
 	});
 })
 // mouse leave changes label span back

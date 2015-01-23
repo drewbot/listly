@@ -3,21 +3,19 @@
 
 
 // primary color
-$irish-spring: #ECF3D6;
-$mint: #B6DFC5;
+$mint: #88dcb2;
 $spring: #E6F0AF;
 $lemon: #E8ED76;
 $mustard: #FFCD57;
-$purple: #4A3A47;
+$purple: #3D2738;
 $white: #ffffff;
 
 // secondary color
-$dark-irish-spring: darken($irish-spring, 15%);
-$darkmint: darken($mint, 15%);
+$darkmint: darken($mint, 5%);
 $darkspring: darken($spring, 10%);
 $darklemon: darken($lemon, 23%);
 $darkmustard: darken($mustard, 10%);
-$darkpurple: darken($purple, 7%);
+$darkpurple: darken($purple, 2%);
 $darkwhite: darken($white, 10%);
 
 // fonts
@@ -48,13 +46,13 @@ $logo-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
 
 // button
 @mixin primary-button($bg-color, $color, $padding-t, $padding-b) {
-    padding: $padding-t 30px $padding-b 22px;
+    padding: $padding-t 20px $padding-b 18px;
     height: 50px;
     background-color: $bg-color;
     @include primary-text(1em, 300, light, $color);
     text-align: center;
     letter-spacing: 0.04em;
-    border: 3px solid darken($bg-color, 7%);
+    border: 2px solid darken($bg-color, 7%);
     border-radius: 25px;
     outline: none;
     transition: all 80ms ease-in;
@@ -89,6 +87,21 @@ $logo-typeface: 'Courgette', 'Comfortaa', helvetica, sans-serif;
     }
 }
 
+@mixin placeholder($color) {
+    input::-webkit-input-placeholder {
+       color: $color;
+    }
+    input:-moz-placeholder { /* Firefox 18- */
+       color: $color;  
+    }
+    input::-moz-placeholder {  /* Firefox 19+ */
+       color: $color;  
+    }
+    input:-ms-input-placeholder {  
+       color: $color;  
+    }
+}
+
 // --------- Global -----------
 *, *:before, *:after {
   -moz-box-sizing: border-box; 
@@ -109,8 +122,8 @@ body {
 header {
     margin: 0 auto;
     height: 100px;
-    background-color: $irish-spring;
-    border-bottom: 3px solid $dark-irish-spring;
+    background-color: $mint;
+    border-bottom: 2px solid $darkmint;
 
     div {
         padding: 25px 30px 0 30px;
@@ -120,16 +133,16 @@ header {
         .logo {
             display: inline-block;
             padding-top: 10px;
-            @include logo-text(1.6em, darken($irish-spring, 20%));
-            -webkit-text-shadow: -1px -1px 3px lighten($irish-spring, 20%);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-text-shadow:    -1px -1px 3px lighten($irish-spring, 20%);  /* Firefox 3.5 - 3.6 */
-            text-shadow:         -1px -1px 3px lighten($irish-spring, 20%);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+            @include logo-text(1.6em, darken($mint, 20%));
+            -webkit-text-shadow: -1px -1px 3px lighten($mint, 20%);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-text-shadow:    -1px -1px 3px lighten($mint, 20%);  /* Firefox 3.5 - 3.6 */
+            text-shadow:         -1px -1px 3px lighten($mint, 20%);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
         }
 
         .new-item {
             display: inline-block;
             float: right;
-            @include primary-button($purple, $white, 9px, 9px);
+            @include primary-button($darkmint, $white, 9px, 9px);
 
             img {
                 margin-right: 16px;
@@ -157,10 +170,10 @@ header {
 
     .create-item-inner {
         margin: 0 auto;
-        padding: 32px 30px 30px 30px;
+        padding: 90px 30px 85px 30px;
         width: 100%;
         max-width: 1100px;
-        @include primary-text(1.1em, 400, normal, lighten($purple, 40%));
+        @include primary-text(1.1em, 300, normal, lighten($purple, 40%));
         line-height: 2em;
 
         .create-item-form {
@@ -197,13 +210,13 @@ header {
                         margin: -3px 14px 0 0;
                         vertical-align: middle;
                         background-color: $white;
-                        border: 3px solid $darkwhite;
+                        border: 2px solid $darkwhite;
                         border-radius: 100%;
                     }
 
                     input[type="checkbox"]:checked + label span {
                         background-color: $mint;
-                        border: 3px solid darken($mint, 20%);
+                        border: 2px solid darken($mint, 20%);
                     }
 
                     label {
@@ -230,19 +243,23 @@ header {
                     width: 100%;
                     height: 50px;
                     @include primary-text(1em, 400, normal, $purple);
+                    @include placeholder($purple);
+                    text-align: center;
                     border-radius: 25px;
-                    border: 3px solid $darkwhite;
+                    border: 2px solid $darkwhite;
                     outline: none;
-
+                    &:hover {
+                        border: 2px solid darken($purple,20%);
+                    }
                     &:active {
-                        border: 3px solid $darkpurple;
+                        border: 2px solid $mint;
                     }
                 }
 
                 .save-item {
                     margin-top: 25px;
                     width: 100%;
-                    @include primary-button($darkmint, $white, 10px, 10px);
+                    @include primary-button($darkpurple, $white, 10px, 10px);
                 }
             }
         }
@@ -286,7 +303,7 @@ header {
                 padding: 0 0 20px 0;
                 @include primary-text(1.2em, 700, bold, $darkpurple);
                 text-align: center;
-                border-bottom: 3px solid $darkwhite;
+                border-bottom: 2px solid $darkwhite;
             }
 
             ul {
@@ -315,7 +332,7 @@ header {
 
 .options {
     padding: 15px 0;
-    border-bottom: 3px solid $darkwhite;
+    border-bottom: 2px solid $darkwhite;
 
     li {
         padding: 0 0 12px 12px;
@@ -323,16 +340,16 @@ header {
 
     .copy-to-one, .copy-to-two, .copy-to-three {
         margin: 0 5px 10px 0;
-        @include secondary-button(darken($white, 2%), $purple);
+        @include secondary-button(darken($mint, 2%), $white);
     }
 
     .move-to-one, .move-to-two, .move-to-three {
         margin: 0 5px 10px 0;
-        @include secondary-button($mint, $purple);
+        @include secondary-button(lighten($purple,10%), $white);
     }
 
     .delete-button {
-        @include secondary-button($mustard, $purple);
+        @include secondary-button($white, $purple);
     }
 }
 

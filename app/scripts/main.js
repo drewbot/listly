@@ -24,14 +24,14 @@ $('.new-item').click(function () {
 		$('#new-input').focus();
 		rotation += 135;
     $('.new-item img').rotate(rotation);
+    $('.create-item').css({
+	  	'background-color' : '#3D2738'
+	  })
 	}
 	$('.create-item').toggleClass('show-item-create');
 	$('.create-item').animate({height: 'toggle'}, 400, function() {
   });
 });
-
-
-
 
 
 // store the checked checkbox in a variable
@@ -63,18 +63,27 @@ $('.create-item-form').find('label').mouseleave( function(){
 
 // focus in on new item input changes border color
 $('.new-input').focusin( function(){
-	$(this).css( "border-color", "#362a34" );
+	$(this).css({
+		"border-color" : "#362a34"
+	});
+	$('.create-item').css({
+  	'background-color' : '#472941'
+  })
 });
 // focus out on new item input changes border color back
 $('.new-input').focusout( function(){
-	$(this).css( "border-color", "#e6e6e6" );
+	$(this).css({
+		"border-color": "#e6e6e6"
+	});
 });
 
-$('.save-item').click( function() {
+// Creating a reusable function for saving an item
+var saveItem = function() {
 	var val = [];
 	// checks for a value in input field and makes sure a box is checked before saving
 	// .length will search the dom for the number of classes that match the selector 
 	if ($('.new-input').val() !== '' && $('input:checkbox:checked').length > 0 ){
+		console.log("save item called")
 		// the saved value will be equal to whatever is entered in the text box
 		var text = $('.new-input').val();
 		// for each checkbox that is checked, add it's value to an array named val
@@ -115,10 +124,23 @@ $('.save-item').click( function() {
 		$('.create-item').toggleClass('show-item-create');
 		$('.create-item').animate({height: 'toggle'}, 400, function() {
 	  });
+	  $('.create-item').css({
+	  	'background-color' : '#3D2738'
+	  })
 	} else {
 		alert("You must add a new list item and select a list to add the item to before saving");
 	}
+};
+
+// save item on enter
+$('.new-input').keypress(function(e) {
+    if(e.which == 13) {
+        saveItem();
+    }
 });
+
+// save item on click
+$('.save-item').click(saveItem);
 
 
 
